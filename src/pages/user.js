@@ -38,10 +38,10 @@ class User extends Component{
 				<div className='container'>
 					{info}
 					<div className='control'>
-						<Link to="/send" className='item'>投递</Link>
-						<Link to="/face" className='item'>面试</Link>
-						<Link to="/invite" className='item'>邀约</Link>
-						<Link to="/collect" className='item'>收藏</Link>
+						<Link to="/deliverlist" className='item'>投递</Link>
+						<Link to="/interviewlist" className='item'>面试</Link>
+						<Link to="/invitation" className='item'>邀约</Link>
+						<Link to="/collectlist" className='item'>收藏</Link>
 					</div>
 					<a  style={this.state.login?{display:'block'}:{display:'none'}} onClick={this.esc} className='esc'>退出登录</a>
 				</div>

@@ -17,6 +17,29 @@ input,button{
     font-size: .18rem;
     text-align: center;
     width: 100%;
+    position: relative;
+}
+.hback{
+	position: absolute;
+	width: .44rem;
+	height: .44rem;
+	left: 0;
+	right: 0;
+}
+.hback span{
+	color: #fff;
+	line-height: .44rem;
+}
+.home{
+	position: absolute;
+	right: 0;
+	width: .44rem;
+	height: .44rem;
+}
+.home span{
+	color: #fff;
+	font-size: .2rem;
+	line-height: .44rem;
 }
 /*底部*/
 .footer{
@@ -49,6 +72,14 @@ input,button{
 	width: 100%;
 	padding-bottom: .44rem;
 }
+.container-p{
+	width: 100%;
+	padding: .2rem;
+	box-sizing: border-box;
+}
+.container-n{
+	width: 100%;
+}
 /*职位*/
 .headmsg{
 	line-height: .45rem;
@@ -58,7 +89,8 @@ input,button{
 	border-bottom: 1px solid #eee;
 }
 .edit{
-	float: right;
+	position: absolute;
+	right: 0;
 	line-height: .3rem;
 	padding: 0 .2rem;
 	border-radius: .15rem;
@@ -87,6 +119,7 @@ input,button{
 	width: 2.3rem;
 }
 .item-title{
+	width: 85%;
 	font-weight: bold;
 	overflow: hidden;
 	white-space: nowrap;
@@ -101,6 +134,10 @@ input,button{
 }
 .item-info{
 	position: relative;
+}
+.item-time{
+	margin-top: 0.05rem;
+	color: #888;
 }
 .item-salary{
 	color:#00b38a;
@@ -189,6 +226,13 @@ input,button{
 	font-size: .16rem;
 	height: .6rem;
 }
+.empty-info{
+	line-height: .45rem;
+	text-align: center;
+	color: #c2cfcc;
+	font-size: .16rem;
+	margin-top: .2rem;
+}
 .history-item{
 	background: #fafafa;
 	line-height: .45rem;
@@ -264,8 +308,345 @@ input,button{
 .control .item:nth-child(2n){
 	margin-left: 4%;
 }
+/***************************** 编辑 *****************************/
+#edit{
+	padding: .2rem;
+}
+.msg-details{
+	display: block;
+    margin: .1rem 0 .2rem 0;
+    text-align: center;
+    height: 0.625rem;
+    line-height: 0.625rem;
+    color: #333;
+    font-size: .15rem;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 10px;
+}
+.msg-title{
+	display: block;
+    color: #ccc;
+    font-size: .12rem;
+}
+.container .tosearch{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	line-height: .45rem;
+	display: block;
+	background:#00b38a; 
+	color: #fff;
+	font-size: .2rem;
+	text-align: center;
+}
+.info{
+	background: #eeeeee;
+	color: #00b38a;
+	height: 1.26rem;
+	width: 100%;
+	position: relative;
+}
+.info .middle{
+	position: absolute;
+	font-size: .2rem;
+	width: 100%;
+	text-align: center;
+	top: .53rem;
+}
+.info .top{
+	position: absolute;
+	font-size: .2rem;
+	left: .2rem;
+	top: .4rem;
+}
+.info .bottom{
+	position: absolute;
+	font-size: .2rem;
+	left: .6rem;
+	top: .7rem;
+}
+.write{
+	height: .5rem;
+	border-bottom: 1px solid #ccc;
+}
+.write input{
+	font-size: .2rem;
+	line-height: .5rem;
+	padding-left: .2rem;
+	color: #666;
+}
+.write a{
+	float: right; 
+	width: .5rem;
+	border-left: 1px solid #ccc;
+	line-height: .5rem;
+	display: block;
+	text-align: center;
+	color: #c2cfcc;
+	font-size: .16rem;
+}
+.choose{
+	padding-left: .2rem;
+	box-sizing: border-box;
+}
+.msg-item{
+	padding-left: .05rem;
+	box-sizing: border-box;
+	border-bottom: 1px solid #ccc;
+	line-height: .45rem;
+	font-size: .14rem;
+	color: #666;
+}
+.city-item{
+	border-top: 1px solid #ccc;
+}
+.city-item .title{
+	line-height: .26rem;
+	color: #666;
+	border-bottom: 1px solid #ccc;
+	padding-left: .2rem;
+	box-sizing: border-box;
+}
+.city-item .msg-city{
+	width: 33%;
+	display: inline-block;
+	line-height: .6rem;
+	text-align: center;
+	font-size: .18rem;
+	height: .6rem;
+	overflow: hidden;
 
+}
+/*****************************************职位详情页**************************************************/
+.job-title{
+	line-height: .5rem;
+	font-size: .2rem;
+	font-weight: bold;
+	padding-left: .2rem;
+	box-sizing: border-box;
+	position: relative;
+	border-bottom: 1px solid #ffe95a;
+}
+.collect{
+	position: absolute;
+	right: 0;
+	width: .5rem;
+	line-height: .5rem;
+	text-align: center;
+}
+.job-title .top{
+	display: inline-block;
+	color:#ffe95a;
+}
+.position-msg{
+	border-bottom: 1px solid #eee;
+	padding: .2rem 0;
+}
+.posi-item{
+	display: inline-block;
+	width: 33%;
+	text-align: center;
+	line-height: .3rem;
+}
+.posi-info{
+	line-height: .3rem;
+	color: #999;
+}
+.company-msg{
+	position: relative;
+	padding: .2rem 0;
+}
+.company-msg .img{
+	position: absolute;
+	right: .2rem;
+	top: .3rem;
+	display: inline-block;
+    width: 23px;
+    height: 29px;
+    background: url('https://m.lagou.com/images/mobile/asset/common/img/icon.png') no-repeat -222.5px -3.5px;
+    background-size: 250px 250px;
+ }
+.company-msg .logo{
+	position: absolute;
+	left: .2rem;
+	top: .2rem;
+}
+.logo img{
+	width: .6rem;
+	height: .6rem;
+}
+.company-msg .title{
+	padding-left: 1rem;
+	color: #00b38a;
+	font-size: .18rem;
+}
+.company-msg .msg{
+	padding-left: 1rem;
+	width: 1.6rem;
+}
+.position-title{
+	line-height: .5rem;
+	padding-left: .2rem;
+	background: #d2f9f0;
+	color: #00b38a;
+	box-sizing: border-box;
+}
+.position-details{
+	padding: .2rem;
+}
+.position-details h5{
+	font-weight: bold;
+}
+.de-back{
+	position: fixed;
+	padding: .2rem;
+	background: rgba(255,255,255,0.7);
 
+}
+.de-send{
+	z-index: 5;
+	background: #00b38a;
+	text-align: center;
+	line-height: .44rem;
+	width: 100%;
+	border-radius: 5px;
+}
+/********************** control **************************/
+/*投递*/
+.deliver,.interview{
+	border-bottom: 1px solid #e8e8e8;
+	display: flex;
+}
+.deliver a{
+	flex: 1;
+	text-align: center;
+	line-height: .45rem;
+	font-size: .14rem;
+	color: #555
+}
+.deliver .de-active{
+	color: #00b38a;
+    background-color: #f5f5f5;
+}
+/*面试*/
+.interview a{
+	flex: 1;
+	text-align: center;
+	line-height: .45rem;
+	font-size: .14rem;
+	color: #00b38a;
+}
+.interview .inter-active{
+	color: #333;
+	background: #f0f0f0;
+}
+.inter-back{
+	background: #f0f0f0;
+	position: fixed;
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+}
+.inter-back .send{
+	text-decoration: underline;
+	color: #00b38a;
+	font-size: .16rem;
+}
+.inter-back .empty-info{
+	color: #555;
+}
+/*邀约*/
+.plus{
+	width: 100%;
+	box-sizing: border-box;
+	height: 205px;
+	border: 1px solid #c7f3e9;
+	background-color: #eafffa;
+	padding: 12px;
+}
+.bulb{
+	height: 33px;
+}
+.plus p {
+    font-size: .14rem;
+    color: #3f4e4b;
+    line-height: 20px;
+    text-indent: 2em;
+    margin-top: 9px;
+}
+.plus .plusbtn {
+    width: 45%;
+    margin: 9px auto;
+}
+.plus .plusbtn span {
+    color: #3f4e4b;
+    display: inline-block;
+    font-size: .13rem;
+    position: relative;
+    top: -10px;
+    font-weight: bold;
+}
+.plus .plusbtn .btn {
+    display: inline-block;
+    width: 68px;
+    height: 28px;
+    line-height: 28px;
+    background-color: #5e5e5e;
+    border-radius: 15px;
+    position: relative;
+    margin-left: 8px;
+}
+.plus .plusbtn .btn .circle {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    position: absolute;
+    top: 2px;
+    left: 3px;
+}
+.plus .plusbtn .btn .close {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    color: #fff;
+    font-size: .3rem;
+}
+.explain {
+    margin-top: 20px;
+    padding-left: 8px;
+}
+.explain p {
+    color: #aaa;
+    font-size: .12rem;
+    line-height: 17px;
+}
+.explain .txt {
+    margin-top: 12px;
+}
+.tips{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background: #000;
+	color: #fff;
+	width: 50%;
+	font-size: .16rem;
+	padding: .2rem;
+	box-sizing: border-box;
+	border-radius: 5px;
+	height: 1.5rem;
+}
 /*******************************************登录页****************************************************/
 #login,#register{
 	background: -webkit-linear-gradient(135deg,#029253,#00887b);

@@ -31,7 +31,7 @@ class Job extends Component{
 		if(!pid){
 			pid = e.target.parentNode.parentNode.dataset.positionid
 		}	
-		window.location.href = "https://m.lagou.com/jobs/" +pid+".html"
+		window.location.href = "/jobs/" +pid+".html";
 	}
 }
 

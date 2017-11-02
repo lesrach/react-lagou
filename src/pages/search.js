@@ -20,9 +20,10 @@ class Search extends Component{
 		this.remove = this.remove.bind(this);
 		this.load = this.load.bind(this);
 		this.search = this.search.bind(this);
+		this.InputChange = this.InputChange.bind(this);
 	}
 	render (){
-		var html,htmlct,citys= [{"cityList":["北京","上海","广州","深圳","成都","杭州"],"name":"热门城市","nameStr":"热门城市"},{"cityList":["保定","北京","宝鸡","包头","亳州","长春","成都","重庆","长沙","常州","沧州","东莞","大连","大理","东营","德州","佛山","福州"],"name":"","nameStr":"ABCDEF"},{"cityList":["桂林","贵阳","广州","赣州","淮安","邯郸","哈尔滨","合肥","呼和浩特","海口","黄石","杭州","惠州","湖州","金华","吉林","江门","济南","济宁","嘉兴","荆州"],"name":"","nameStr":"GHIJ"},{"cityList":["昆明","聊城","廊坊","拉萨","丽水","临沂","洛阳","连云港","兰州","柳州","泸州","马鞍山","茂名","绵阳","梅州","宁波","南昌","南充","南京","南宁","南通"],"name":"","nameStr":"KLMN"},{"cityList":["莆田","青岛","秦皇岛","泉州","日照"],"name":"","nameStr":"OPQR"},{"cityList":["上海","石家庄","遂宁","宿迁","汕头","绍兴","沈阳","三亚","深圳","苏州","泰安","天津","铜陵","唐山","太原","台州","泰州"],"name":"","nameStr":"STUV"},{"cityList":["潍坊","武汉","芜湖","威海","乌鲁木齐","无锡","温州","西安","香港特别行政区","厦门","西宁","湘潭","咸阳","信阳","徐州","银川","盐城","宜昌","烟台","岳阳","扬州","淄博","珠海","镇江","湛江","周口","肇庆","中山","郑州","漳州","株洲"],"name":"","nameStr":"WXYZ"}];
+		var html,htmlct,restext,citys= [{"cityList":["北京","上海","广州","深圳","成都","杭州"],"name":"热门城市","nameStr":"热门城市"},{"cityList":["保定","北京","宝鸡","包头","亳州","长春","成都","重庆","长沙","常州","沧州","东莞","大连","大理","东营","德州","佛山","福州"],"name":"","nameStr":"ABCDEF"},{"cityList":["桂林","贵阳","广州","赣州","淮安","邯郸","哈尔滨","合肥","呼和浩特","海口","黄石","杭州","惠州","湖州","金华","吉林","江门","济南","济宁","嘉兴","荆州"],"name":"","nameStr":"GHIJ"},{"cityList":["昆明","聊城","廊坊","拉萨","丽水","临沂","洛阳","连云港","兰州","柳州","泸州","马鞍山","茂名","绵阳","梅州","宁波","南昌","南充","南京","南宁","南通"],"name":"","nameStr":"KLMN"},{"cityList":["莆田","青岛","秦皇岛","泉州","日照"],"name":"","nameStr":"OPQR"},{"cityList":["上海","石家庄","遂宁","宿迁","汕头","绍兴","沈阳","三亚","深圳","苏州","泰安","天津","铜陵","唐山","太原","台州","泰州"],"name":"","nameStr":"STUV"},{"cityList":["潍坊","武汉","芜湖","威海","乌鲁木齐","无锡","温州","西安","香港特别行政区","厦门","西宁","湘潭","咸阳","信阳","徐州","银川","盐城","宜昌","烟台","岳阳","扬州","淄博","珠海","镇江","湛江","周口","肇庆","中山","郑州","漳州","株洲"],"name":"","nameStr":"WXYZ"}];
 		var that = this;
 		if(window.localStorage){
 			var searchHistory = localStorage.getItem("searchH");
@@ -45,6 +46,21 @@ class Search extends Component{
 		var result = this.state.result.slice(0,this.state.length).map(function(curr,index) {
 			return (<Job positionId={curr.positionId} position={curr.positionName} time={curr.createTime} city={curr.city} companyId={curr.companyId} price={curr.salary} src={"//static.lagou.com/"+curr.companyLogo} key={curr.positionId} companyname={curr.companyName}/>)
 		})
+		console.log(this.state.result.length);
+		if(this.state.result.length !== 0){
+			restext = (function(){
+				return (
+					<div>
+						{result} 
+						<a className='load' onClick={that.load}>加载更多</a>
+					</div>
+				)
+			}())
+		} else {
+			restext = (function(){
+				return (<div className='empty-info'>拉勾上暂时没有这样的职位</div>)
+			}())
+		}
 		return(
 			<div>
 				<Header title="拉勾网"/>
@@ -52,15 +68,15 @@ class Search extends Component{
 					<div className='search'> 
 						<a className='back' onClick={this.handleClick}><span className='iconfont icon-houtui' style={!this.state.hide?{display:'block'}:{display:'none'}}></span></a>
 						<a className='country' onClick={this.handleClick}>{this.state.city}<span className='iconfont icon-xiala'></span></a>
-						<input type='text' placeholder='搜索职位或公司'/>
+						<input ref='search' type='text' placeholder='搜索职位或公司' onInput={this.InputChange}/>
 						<a className='submit iconfont icon-sousu' onClick={this.handleClickres}></a>
 					</div>
 					<div className='content' style={this.state.hideres?{display:'block'}:{display:'none'}}>
 						{html}
 					</div>
 					<div className='result' style={!this.state.hideres?{display:'block'}:{display:'none'}}>
-						{result}
-						<a className='load' onClick={this.load}>加载更多</a>
+						{restext}
+						
 					</div>
 				</div>
 				<div className='site' style={!this.state.hide?{display:'block'}:{display:'none'}}>
@@ -69,6 +85,14 @@ class Search extends Component{
 				<Footer />
 			</div>
 		)
+	}
+	InputChange(e){
+		var val = e.target.value;
+		if(val === ""){
+			this.setState({
+				hideres: true
+			})
+		}
 	}
 	handleClickres(e){
 		var val = e.target.previousSibling.value;
@@ -110,6 +134,7 @@ class Search extends Component{
 				return (curr.city === city &&  curr.positionName.indexOf(val) > -1)
 			})
 		}
+		this.refs.search.value = val;
 		this.setState({
 			result: Job,
 			hideres: false
@@ -119,7 +144,6 @@ class Search extends Component{
 		this.setState((prestate)=>{
 			prestate.length += 5;
 		})
-		console.log(this.state.result);
 	}
 	handleClick(){
 		this.setState({
