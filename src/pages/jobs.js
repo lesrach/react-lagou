@@ -16,10 +16,11 @@ class Job extends Component{
 	}
 	render (){
 		var collect;
+		console.log(this.state.msg)
 		if(this.state.collect){
-			collect = (<span className='iconfont top'></span>)
+			collect = (<p><span className='solid top'></span><span className='col-info'>已收藏</span></p>)
 		} else {
-			collect = (<span className='iconfont top'></span>)
+			collect = (<p><span className='dashed top'></span><span className='col-info'>未收藏</span></p>)
 		}
 		var text;
 		if(this.state.msg.details){
@@ -29,7 +30,7 @@ class Job extends Component{
 							<h5>{curr.title}</h5>
 							{curr.p.map(function(curr,index){
 								return (
-										<p>curr</p>
+										<p>{curr}</p>
 									)
 							})}
 						</div>
@@ -41,15 +42,15 @@ class Job extends Component{
 				<Header title="设定定制信息" comp='backhome'/>
 				<div className="container">
 					<div className='job-title'>
-						<a onClick={this.collect}>{collect}</a>
+						<a onClick={this.collect} className='collect'>{collect}</a>
 						{this.state.msg.positionName}
 					</div>
 					<div className='position-msg'>
-						<div className='posi-item'><span></span>{this.state.msg.salary}</div>
-						<div className='posi-item'><span></span>{this.state.msg.positionAddress}</div>
-						<div className='posi-item'><span></span>全职</div>
-						<div className='posi-item'><span></span>3-5年</div>
-						<div className='posi-item'><span></span>本科及以上</div>
+						<div className='posi-item'><span className='dollor'></span>{this.state.msg.salary}</div>
+						<div className='posi-item'><span className='siteicon'></span>{this.state.msg.positionAddress}</div>
+						<div className='posi-item'><span className='clock'></span>全职</div>
+						<div className='posi-item'><span className='backpack'></span>3-5年</div>
+						<div className='posi-item'><span className='hat'></span>本科及以上</div>
 						<p className='posi-info'>{"职业诱惑:"+this.state.msg.advantage}</p>
 					</div>
 					<div className='company-msg'>
@@ -67,7 +68,9 @@ class Job extends Component{
 						{text}
 					</div>
 				</div>
-				<Link onClick={this.info} className='de-send'>投递简历</Link>
+				<div className='de-back'>
+					<Link onClick={this.info} className='de-send'>投递简历</Link>
+				</div>
 				<div className='tips' style={this.state.hide?{display:'none'}:{display:'block'}}>
 					下载拉勾APP，快速完善简历，投递更方便
 				</div>
@@ -75,24 +78,25 @@ class Job extends Component{
 		)
 	}
 	componentWillMount(){
+		var that = this;
 		axios.post('/getposition').then(function(data){
-			console.log(data)
-			this.setState({
-				msg:data
+			that.setState({
+				msg:data.data
 			})
 		})
 	}
 	collect(){
 		this.setState((prestate)=>{
-			collect:!prestate.collect
+			return {collect:!prestate.collect}
 		})
 	}
 	info(){
+		var that = this
 		this.setState({
 			hide:false
 		})
-		setTimeout(function(){
-			this.setState({
+		setTimeout(()=>{
+			that.setState({
 				hide:true
 			})
 		},2000)

@@ -430,13 +430,23 @@ input,button{
 	box-sizing: border-box;
 	position: relative;
 	border-bottom: 1px solid #ffe95a;
+	height: .5rem;
 }
 .collect{
 	position: absolute;
-	right: 0;
+	right: .2rem;
 	width: .5rem;
 	line-height: .5rem;
 	text-align: center;
+	height: .5rem;
+}
+.collect p{
+	display: inline-block;
+	vertical-align: middle;
+}
+.col-info{
+	display: inline-block;
+	color: #999;
 }
 .job-title .top{
 	display: inline-block;
@@ -445,6 +455,44 @@ input,button{
 .position-msg{
 	border-bottom: 1px solid #eee;
 	padding: .2rem 0;
+}
+.position-msg .dollor{
+	background: url('https://m.lagou.com/images/mobile/asset/common/img/icon.png') no-repeat -66px -48px;
+    background-size: 250px 250px;
+}
+.position-msg .siteicon{
+	background: url('https://m.lagou.com/images/mobile/asset/common/img/icon.png') no-repeat -79px -49px;
+    background-size: 250px 250px;
+}
+.position-msg .clock{
+	background: url('https://m.lagou.com/images/mobile/asset/common/img/icon.png') no-repeat -93px -49px;
+    background-size: 250px 250px;
+}
+.position-msg .backpack{
+	background: url('https://m.lagou.com/images/mobile/asset/common/img/icon.png') no-repeat -110.5px -49.5px;
+    background-size: 250px 250px;
+}
+.position-msg .hat{
+	background: url('https://m.lagou.com/images/mobile/asset/common/img/icon.png') no-repeat -127.5px -49px;
+    background-size: 250px 250px;
+}
+.posi-item span{
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	vertical-align: middle;
+}
+.solid{
+	width: 15px;
+    height: 15px;
+    background: url('https://m.lagou.com/images/mobile/asset/common/img/icon.png') no-repeat -150px -41px;
+    background-size: 250px 250px;
+}
+.dashed{
+	width: 15px;
+    height: 15px;
+	background: url('https://m.lagou.com/images/mobile/asset/common/img/icon.png') no-repeat -170px -41px;
+    background-size: 250px 250px;
 }
 .posi-item{
 	display: inline-block;
@@ -455,10 +503,15 @@ input,button{
 .posi-info{
 	line-height: .3rem;
 	color: #999;
+	padding-left: .3rem;
+	box-sizing: border-box;
 }
 .company-msg{
 	position: relative;
 	padding: .2rem 0;
+}
+.company-details{
+	height: .6rem;
 }
 .company-msg .img{
 	position: absolute;
@@ -500,12 +553,20 @@ input,button{
 }
 .position-details h5{
 	font-weight: bold;
+	line-height: .22rem;
+	color: #555;
+}
+.position-details p{
+	line-height: .22rem;
+	color: #555;
 }
 .de-back{
 	position: fixed;
-	padding: .2rem;
+	padding: .1rem;
 	background: rgba(255,255,255,0.7);
-
+	bottom: 0;
+	width: 100%;
+	box-sizing: border-box;
 }
 .de-send{
 	z-index: 5;
@@ -514,6 +575,9 @@ input,button{
 	line-height: .44rem;
 	width: 100%;
 	border-radius: 5px;
+	display: block;
+	color: #fff;
+	font-size: .16rem;
 }
 /********************** control **************************/
 /*投递*/

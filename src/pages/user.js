@@ -60,6 +60,12 @@ class User extends Component{
 				login:false
 			})
 		}
+		var login = localStorage.getItem('login');
+		if(login === 'false'){
+			this.setState({
+				login:false
+			})
+		}
 	}
 	esc(){
 		localStorage.setItem("login","false")

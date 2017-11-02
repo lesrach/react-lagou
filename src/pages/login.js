@@ -22,14 +22,17 @@ class Login extends Component{
 	handleClick(){
 		var res = this.refs.password.check()
 		+ this.refs.user.check();
+		var that = this;
 		if(res < 1 ){
 			axios.post("/login",{
-				phone:this.refs.user.value,
-				password:this.refs.password.value
+				phone:that.refs.user.value(),
+				password:that.refs.password.value()
 			}).then(function(data){
-				console.log(data)
-				if(data.status == 0){
+				if(data.data.status === "0"){
+					localStorage.setItem("login",true);
 					window.location.href = "/";
+				} else {
+					that.refs.password.failed();
 				}
 			})
 		}

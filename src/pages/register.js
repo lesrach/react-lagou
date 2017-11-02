@@ -28,10 +28,11 @@ class Register extends Component{
 		this.refs.imgcode.check() +
 		this.refs.phone.check() +
 		this.refs.password.check();
+		var that = this;
 		if(res < 1){
 			axios.post("/register",{
-				phone:this.refs.phone.value,
-				password:this.refs.password.value
+				phone:that.refs.phone.value(),
+				password:that.refs.password.value()
 			})
 			window.location.href = "/login";
 		}

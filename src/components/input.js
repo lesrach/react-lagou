@@ -11,6 +11,8 @@ class Input extends Component{
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.check = this.check.bind(this);
+		this.failed = this.failed.bind(this);
+		this.value = this.value.bind(this);
 	}
 	render(){
 		var a = null;
@@ -44,7 +46,6 @@ class Input extends Component{
 		}
 	}
 	check(){
-		console.log("check");
 		var val =this.refs.input.value,
 			type = this.props.name,
 			text;
@@ -78,6 +79,16 @@ class Input extends Component{
 			return 0
 		} else {
 			return 1
+		}
+	}
+	value(){
+		var val = this.refs.input.value;
+		return val;
+	}
+	failed(){
+		console.log('error');
+		if(this.state.type === 'password'){
+			this.refs.mess.innerHTML = '账号密码错误！'
 		}
 	}
 }
