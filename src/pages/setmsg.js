@@ -6,11 +6,10 @@ class Setmsg extends Component{
 	constructor(){
 		super();
 		this.state = {
-			msg:{init:false},
+			msg:{init:true},
 			page:null,
 			text:null,
-			hide:false,
-			init:false
+			hide:false
 		}
 		this.handleClick = this.handleClick.bind(this);
 		this.hide = this.hide.bind(this);
@@ -126,22 +125,42 @@ class Setmsg extends Component{
 	}
 	handleClick(e){
 		var val = e.target.dataset.data,
-			arr = ['position','city','salary','stage'];
+			arr = ['position','city','salary','stage'],
+			Set = localStorage.getItem("set"),init;
+		if(Set){
+			var _set =  JSON.parse(Set);
+			init = _set.init;
+		}
 		this.state.msg[arr[this.state.page]] = val;
 		if(this.state.page === 3){
-			localStorage.setItem("set",JSON.stringify(this.state.msg))
+			localStorage.setItem("set",JSON.stringify(this.state.msg));
+			if(init){
+				this.state.msg.init = false;
+				localStorage.setItem("set",JSON.stringify(this.state.msg));
+			}
 			window.location.href = "/edit";
 		} else if(this.state.page === 0){
-			localStorage.setItem("set",JSON.stringify(this.state.msg))
-			window.location.href = "/setmsg/city";
+			localStorage.setItem("set",JSON.stringify(this.state.msg));
+			if(init){
+				window.location.href = "/setmsg/city";
+			} else {
+				window.location.href = '/edit';
+			}
 		}else if(this.state.page === 1){
 			localStorage.setItem("set",JSON.stringify(this.state.msg))
-			window.location.href = "/setmsg/salary";
+			if(init){
+				window.location.href = "/setmsg/salary";
+			} else {
+				window.location.href = '/edit';
+			}
 		}else if(this.state.page === 2){
 			localStorage.setItem("set",JSON.stringify(this.state.msg))
-			window.location.href = "/setmsg/stage";
+			if(init){
+				window.location.href = "/setmsg/stage";
+			} else {
+				window.location.href = '/edit';
+			}
 		}
-		console.log(this.state.msg);
 	}
 	componentWillMount(){
 		console.log(this.props.location);
@@ -173,10 +192,10 @@ class Setmsg extends Component{
 			})
 		}
 		var set = localStorage.getItem("set");
-
-		if(set){
+		if(!set){
+			localStorage.setItem('set',JSON.stringify({init:true}));
+		} else {
 			this.setState({
-				init:false,
 				msg:JSON.parse(set)
 			})
 		}
